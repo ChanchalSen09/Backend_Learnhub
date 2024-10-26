@@ -170,7 +170,7 @@ router.post("/updateCoins", async (req, res) => {
     };
 
     if (newProfileLevel !== user.profileLevel.level) {
-      const newLabel = profileLabels[newProfileLevel] || 'Unknown';
+      const newLabel = profileLabels[newProfileLevel] || 'Grade Master';
 
       user.profileLevel = {
         level: newProfileLevel,
