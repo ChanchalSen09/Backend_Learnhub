@@ -26,7 +26,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 
 app.get('*', (req, res) => {
-  res.send('Welcome to the Quiz App Backend!');
+  res.send('Welcome to the Learnhub Backend!');
 });
 
 app.use((err, req, res, next) => {
