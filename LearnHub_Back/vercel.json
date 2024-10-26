@@ -17,8 +17,5 @@
       "dest": "index.js",
       "methods": ["GET"]
     }
-  ],
-  "engines": {
-    "node": ">=14.x"
-  }
+  ]
 }
