@@ -7,7 +7,7 @@ require("dotenv").config();
 const app = express();
 
 const corsConfig = {
-     origin: ["http://localhost:5173", "https://your-frontend-domain.com"],
+     origin: ["http://localhost:5173/", "https://your-frontend-domain.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
