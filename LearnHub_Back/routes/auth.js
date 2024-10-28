@@ -335,5 +335,47 @@ router.get("/leaderboard", async (req, res) => {
     res.status(500).json({ message: "Database error", error: error.message });
   }
 });
+// Module Update route
+router.put("/module-Update", async (req, res) => {
+  const { email, modules } = req.body;
+
+  if (!email || !modules) {
+    return res.status(400).json({ message: "Email and modules data are required" });
+  }
+
+  const allowedModules = ["code", "quiz", "typing"];
+  const invalidFields = Object.keys(modules).filter(field => !allowedModules.includes(field));
+  if (invalidFields.length) {
+    return res.status(400).json({ message: `Invalid fields in modules: ${invalidFields.join(", ")}` });
+  }
+
+  const invalidValues = Object.entries(modules).filter(([key, value]) => typeof value !== "number" || !Number.isFinite(value));
+  if (invalidValues.length) {
+    return res.status(400).json({ message: `Invalid values in modules: ${invalidValues.map(([key]) => key).join(", ")}` });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    Object.keys(modules).forEach(key => {
+      user.modules[key] = modules[key];
+    });
+
+    await user.save();
+
+    res.status(200).json({
+      message: "Modules updated successfully",
+      modules: user.modules,
+    });
+  } catch (error) {
+    console.error("Module Update Error:", error);
+    res.status(500).json({ message: "Server error while updating modules" });
+  }
+});
+
 
 module.exports = router;

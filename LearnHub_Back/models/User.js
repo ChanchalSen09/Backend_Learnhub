@@ -6,6 +6,11 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   coins: { type: Number, default: 0 },
+  modules: {
+    code: { type: Number, default: 0 },
+    quiz: { type: Number, default: 0 },
+    typing: { type: Number, default: 0 }
+  },
   profileLevel: {
     level: { type: Number, default: 1 },
     label: { type: String, default: "Novice" }
