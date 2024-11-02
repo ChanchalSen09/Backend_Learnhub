@@ -160,14 +160,14 @@ router.post("/updateCoins", async (req, res) => {
     user.coins += coinsEarned;
 
     const newProfileLevel = calculateProfileLevel(user.coins);
-    const profileLabels = {
+     const profileLabels = {
       1: 'Novice',
-      2: 'Intermediate',
+      2: 'Explorer',
       3: 'Ace',
-      4: 'Pro',
-      5: 'Expert',
-      6: 'Master',
-     };
+      4: 'Master',
+      5: 'Grand Master',
+    };
+
 
     if (newProfileLevel !== user.profileLevel.level) {
       const newLabel = profileLabels[newProfileLevel] || 'Grandmaster';
