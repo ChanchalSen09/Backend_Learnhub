@@ -167,7 +167,7 @@ router.post("/updateCoins", async (req, res) => {
       4: 'Pro',
       5: 'Expert',
       6: 'Master',
-    };
+     };
 
     if (newProfileLevel !== user.profileLevel.level) {
       const newLabel = profileLabels[newProfileLevel] || 'Grandmaster';
