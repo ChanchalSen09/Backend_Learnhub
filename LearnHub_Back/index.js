@@ -7,7 +7,7 @@ require("dotenv").config();
 const app = express();
 
 const corsConfig = {
-    origin: "*",
+    origin: "https://learnhub-sigma.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
